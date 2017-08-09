@@ -1,0 +1,46 @@
+snippet import "import { ... } from '...';" b
+import \{ ${1:ClassName} } from '${2:./library}';
+endsnippet
+
+snippet importp "import { Page } from '../pages/page/page'" b
+import \{ ${1:MyPage}Page } from '../pages/${2:${1/.*/\L$0\E/}}/${3:${1/.*/\L$0\E/}}';
+endsnippet
+
+snippet /* "Comment block" b
+/**
+ * ${1}
+ */
+endsnippet
+
+snippet .tc "then ... catch" i
+.then (${1:property} => {
+	${2:// Then code}
+}).catch(error => {
+	${3:// FIXME: Handle errors
+	console.log ('error');
+	console.log (error);}
+});
+endsnippet
+
+snippet arf "Arrow function" i
+${1:(${2:arguments})} => {
+	${3:// Code...}
+}
+endsnippet
+
+snippet comp "Angular component"
+import { Component } from '@angular/core';
+${5:// Imports}
+
+@Component ({
+	selector: '${1:prefix-}${2:`!v substitute(vim_snippets#Filename(), '.component', '', 'g')`}',
+	template: \`${0}\`
+})
+export class ${3:${2/(^|-)(\w)/\u$2/g}}Component {
+	/* Properties */
+
+	public constructor (${4:/* Providers */}) {}
+
+	/* Methods */
+}
+endsnippet
