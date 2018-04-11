@@ -1,5 +1,5 @@
 snippet import "import { ... } from '...';" b
-import \{ ${1:ClassName} } from '${2:./library}';
+import \{ ${1:ClassName} } from '${2:./library/}${1/(^[A-Z])|[A-Z]/(?1::-)\l$0/g}';
 endsnippet
 
 snippet importp "import { Page } from '../pages/page/page'" b
