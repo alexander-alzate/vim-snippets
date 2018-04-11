@@ -44,3 +44,65 @@ export class ${3:${2/(^|-)(\w)/\u$2/g}}Component {
 	/* Methods */
 }
 endsnippet
+
+snippet testtpl "Test template"
+${4:/* Stubs */}
+import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { IonicModule } from 'ionic-angular';
+
+import { MyApp } from '../../app/app.component';
+import { ${1:Some}${2:Component} } from './${1/(^[A-Z])|[A-Z]/(?1::-)\l$0/}';
+${3:/* Local imports */}
+
+describe('$2: ${1/[A-Z]/ $0/} $2', () => {
+	let component : $1$2;
+	let fixture : ComponentFixture<$1$2>;
+	let debugElement : DebugElement;
+	let element : HTMLElement;
+
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			declarations: [MyApp, $1$2],
+			providers: [${5}],
+			imports: [IonicModule.forRoot(MyApp)]
+		}).compileComponents();
+	}));
+
+	beforeEach(() => {
+		fixture = TestBed.createComponent($1$2);
+		component = fixture.componentInstance;
+	});
+
+	afterEach(() => {
+		fixture.destroy();
+		component = null;
+		debugElement = null;
+		element = null;
+	});
+
+	it('should be created', () => {
+		expect(fixture).toBeTruthy();
+		expect(component).toBeTruthy();
+	});
+
+	${6:/* Tests */}
+});
+endsnippet
+
+snippet describe "Describe debug code"
+describe ('${1:description}', () => {
+	${2:/* Code */}
+});
+endsnippet
+
+snippet beforeEach "Before each debug code"
+beforeEach (${1:() => {
+	${2:/* Code */}
+}});
+endsnippet
+
+snippet it "It debug code"
+it ('${1:description}', () => {
+	${2:/* Code */}
+});
+endsnippet
