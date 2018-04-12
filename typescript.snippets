@@ -48,12 +48,15 @@ endsnippet
 snippet testtpl "Test template"
 ${4:/* Stubs */}
 import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { DebugElement }                     from '@angular/core';
+import { By }                               from '@angular/platform-browser';
+
 import { IonicModule } from 'ionic-angular';
 
 import { MyApp } from '../../app/app.component';
 import { ${1:Some}${2:Component} } from './${1/(^[A-Z])|[A-Z]/(?1::-)\l$0/g}';
-${3:/* Local imports */}
-
+${3:/* Local imports
+*/}
 describe('$2: ${1/(^[A-Z])|[A-Z]/(?1:$0: \l$0)/g}', () => {
 	let component    : $1$2;
 	let fixture      : ComponentFixture<$1$2>;
