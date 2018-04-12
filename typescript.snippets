@@ -15,7 +15,7 @@ endsnippet
 snippet .tc "then ... catch" i
 .then (${1:property} => {
 	${2:// Then code}
-}).catch(error => {
+}).catch (error => {
 	${3:// FIXME: Handle errors
 	console.log ('error');
 	console.log (error);}
@@ -33,7 +33,7 @@ import { Component } from '@angular/core';
 ${5:// Imports}
 
 @Component ({
-	selector: '${1:prefix-}${2:`!v substitute(vim_snippets#Filename(), '.component', '', 'g')`}',
+	selector: '${1:prefix-}${2:`!v substitute (vim_snippets#Filename (), '.component', '', 'g')`}',
 	template: \`${0}\`
 })
 export class ${3:${2/(^|-)(\w)/\u$2/g}}Component {
@@ -57,36 +57,36 @@ import { MyApp } from '../../app/app.component';
 import { ${1:Some}${2:Component} } from './${1/(^[A-Z])|[A-Z]/(?1::-)\l$0/g}';
 ${3:/* Local imports
 */}
-describe('$2: ${1/(^[A-Z])|[A-Z]/(?1:$0: \l$0)/g}', () => {
+describe ('$2: ${1/(^[A-Z])|[A-Z]/(?1:$0: \l$0)/g}', () => {
 	let component    : $1$2;
 	let fixture      : ComponentFixture<$1$2>;
 	let debugElement : DebugElement;
 	let element      : HTMLElement;
 
-	beforeEach(async(() => {
-		TestBed.configureTestingModule({
+	beforeEach (async (() => {
+		TestBed.configureTestingModule ({
 			declarations: [MyApp, $1$2],
 			providers: [${5}],
-			imports: [IonicModule.forRoot(MyApp)]
-		}).compileComponents();
+			imports: [IonicModule.forRoot (MyApp)]
+		}).compileComponents ();
 	}));
 
-	beforeEach(() => {
-		fixture    = TestBed.createComponent($1$2);
+	beforeEach (() => {
+		fixture    = TestBed.createComponent ($1$2);
 		component  = fixture.componentInstance;
 	});
 
-	afterEach(() => {
-		fixture.destroy();
+	afterEach (() => {
+		fixture.destroy ();
 
 		component    = null;
 		debugElement = null;
 		element      = null;
 	});
 
-	it('should be created', () => {
-		expect(fixture).toBeTruthy();
-		expect(component).toBeTruthy();
+	it ('should be created', () => {
+		expect (fixture).toBeTruthy ();
+		expect (component).toBeTruthy ();
 	});
 
 	${6:/* Tests */}
