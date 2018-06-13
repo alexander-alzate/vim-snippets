@@ -3,7 +3,7 @@ import \{ ${1:ClassName} } from '${2:${3:./library/}${1/(^[A-Z])|[A-Z]/(?1::-)\l
 endsnippet
 
 snippet importp "import { Page } from '../pages/page/page'" b
-import \{ ${1:MyPage}Page } from '../pages/${2:${1/(^[A-Z])|[A-Z]/(?1::-)\l$0/g}}/${3:${1/(^[A-Z])|[A-Z]/(?1::-)\l$0/g}}';
+import \{ ${1:MyPage}PageModule } from '../pages/${2:${1/(^[A-Z])|[A-Z]/(?1::-)\l$0/g}}/${3:${1/(^[A-Z])|[A-Z]/(?1::-)\l$0/g}.module}';
 endsnippet
 
 snippet /* "Comment block" b
@@ -13,18 +13,18 @@ snippet /* "Comment block" b
 endsnippet
 
 snippet .tc "then ... catch" i
-.then (${1:property} => {
-	${2:// Then code}
-}).catch (error => {
-	${3:// FIXME: Handle errors
+.then ((${1:property}) => {
+	${3:// Then code}
+})${2:.catch ((error) => {
+	${4:// FIXME: Handle errors
 	console.log ('error');
 	console.log (error);}
-});
+})};
 endsnippet
 
 snippet arf "Arrow function" i
-${1:(${2:arguments})} => {
-	${3:// Code...}
+(${1:arguments}) => {
+	${2:// Code...}
 }
 endsnippet
 
@@ -45,18 +45,31 @@ export class ${3:${2/(^|-)(\w)/\u$2/g}}Component {
 }
 endsnippet
 
+snippet gs "Getters and Setter"
+public get ${1:attributeName} () : ${2:string} {
+	return ${3:this._$1};
+}
+
+public set $1 (value : $2) {
+	${4:this._$1 = ${5:value}};
+}
+endsnippet
+
 snippet testtpl "Test template"
 ${4:/* Stubs */}
-import { TestBed, ComponentFixture, async } from '@angular/core/testing';
-import { DebugElement }                     from '@angular/core';
-import { By }                               from '@angular/platform-browser';
+import { DebugElement }             from '@angular/core';
+import { ComponentFixture, TestBed} from '@angular/core/testing';
+import { async }                    from '@angular/core/testing';
+import { By }                       from '@angular/platform-browser';
 
 import { IonicModule } from 'ionic-angular';
 
 import { MyApp } from '../../app/app.component';
 import { ${1:Some}${2:Component} } from './${1/(^[A-Z])|[A-Z]/(?1::-)\l$0/g}';
-${3:/* Local imports
-*/}
+${3:/* Local imports */
+}
+const PRFX = '${1/(^[A-Z])|[A-Z]/(?1::-)\l$0/g}';
+
 describe ('$2: ${1/(^[A-Z])|[A-Z]/(?1:$0: \l$0)/g}', () => {
 	let component    : $1$2;
 	let fixture      : ComponentFixture<$1$2>;
@@ -66,22 +79,22 @@ describe ('$2: ${1/(^[A-Z])|[A-Z]/(?1:$0: \l$0)/g}', () => {
 	beforeEach (async (() => {
 		TestBed.configureTestingModule ({
 			declarations: [MyApp, $1$2],
-			providers: [${5}],
-			imports: [IonicModule.forRoot (MyApp)]
+			imports: [IonicModule.forRoot (MyApp)],
+			providers: [${5}]
 		}).compileComponents ();
 	}));
 
 	beforeEach (() => {
-		fixture    = TestBed.createComponent ($1$2);
-		component  = fixture.componentInstance;
+		fixture      = TestBed.createComponent ($1$2);
+		component    = fixture.componentInstance;
+		debugElement = fixture.debugElement;
+		element      = debugElement.nativeElement;
+
+		fixture.detectChanges ();
 	});
 
 	afterEach (() => {
 		fixture.destroy ();
-
-		component    = null;
-		debugElement = null;
-		element      = null;
 	});
 
 	it ('should be created', () => {
@@ -105,8 +118,18 @@ beforeEach (${1:() => {
 }});
 endsnippet
 
+snippet afterEach "After each debug code"
+afterEach (${1:() => {
+	${2:/* Code */}
+}});
+endsnippet
+
 snippet it "It debug code"
 it ('${1:description}', () => {
 	${2:/* Code */}
 });
+endsnippet
+
+snippet expect "Jasmine expectation"
+expect (${1:'expect description'}).${2:toEqual} (${3:'expectation'});
 endsnippet
