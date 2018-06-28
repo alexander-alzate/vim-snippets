@@ -20,6 +20,7 @@ snippet .tc "then ... catch" i
 	console.log ('error');
 	console.log (error);}
 })};
+
 endsnippet
 
 snippet arf "Arrow function" i
@@ -116,18 +117,21 @@ snippet beforeEach "Before each debug code"
 beforeEach (${1:() => {
 	${2:/* Code */}
 }});
+
 endsnippet
 
 snippet afterEach "After each debug code"
 afterEach (${1:() => {
 	${2:/* Code */}
 }});
+
 endsnippet
 
 snippet it "It debug code"
 it ('${1:description}', () => {
 	${2:/* Code */}
 });
+
 endsnippet
 
 snippet expect "Jasmine expectation"
