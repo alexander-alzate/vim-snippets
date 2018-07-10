@@ -56,6 +56,16 @@ public set $1 (value : $2) {
 }
 endsnippet
 
+snippet modelgs "Getters and Setter for models"
+public get ${1:attributeName} () : ${2:string} {
+	return ${3:this.get ('$1')};
+}
+
+public set $1 (value : $2) {
+	${4:this.set ('$1', ${5:value})};
+}
+endsnippet
+
 snippet testtpl "Test template"
 ${4:/* Stubs */}
 import { DebugElement }             from '@angular/core';
